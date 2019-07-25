@@ -1,8 +1,5 @@
 package com.daniinyan.core.challenge.dao;
 
-import com.daniinyan.core.challenge.domain.Customer;
-import com.daniinyan.core.challenge.parser.ReportParser;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -36,16 +33,16 @@ public class ReportDAO {
         }
     }
 
-    public List<Customer> getCustomers() {
-        List<Customer> customers = new ArrayList<>();
+    public List<String> readAllInputFiles() {
+        List<String> allRecordsList = new ArrayList<>();
 
         inputFiles
-                .forEach(file -> insertCustomersFromFileToList(file, customers));
+                .forEach(file -> insertRecordsFromFileToList(file, allRecordsList));
 
-        return customers;
+        return allRecordsList;
     }
 
-    private void insertCustomersFromFileToList(String filePath, List<Customer> customersList) {
+    private void insertRecordsFromFileToList(String filePath, List<String> allRecordsList) {
         List<String> records = new ArrayList<>();
 
         try {
@@ -54,10 +51,6 @@ public class ReportDAO {
             System.out.println(e.getMessage());
         }
 
-        records
-                .stream()
-                .filter(record -> ReportParser.parserId(record).equals("002"))
-                .map(ReportParser::parserCustomer)
-                .forEach(customersList::add);
+        allRecordsList.addAll(records);
     }
 }
