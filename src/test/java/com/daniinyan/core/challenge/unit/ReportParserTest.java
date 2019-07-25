@@ -9,6 +9,17 @@ import static org.junit.Assert.assertEquals;
 public class ReportParserTest {
 
     @Test
+    public void mustReturnIdFromRecord() {
+        String salesmanRecord = "001ç1234567891234çDiegoç50000";
+        String customerRecord = "002ç2345675434544345çJose da SilvaçRural";
+        String saleRecord = "003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çDiego";
+
+        assertEquals("001", ReportParser.parserId(salesmanRecord));
+        assertEquals("002", ReportParser.parserId(customerRecord));
+        assertEquals("003", ReportParser.parserId(saleRecord));
+    }
+
+    @Test
     public void mustReturnCustomerFromRecord() {
         String record = "002ç2345675434544345çJose da SilvaçRural";
         Customer parsedCustomer = ReportParser.parserCustomer(record);

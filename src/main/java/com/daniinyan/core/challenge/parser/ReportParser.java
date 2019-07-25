@@ -6,6 +6,11 @@ public class ReportParser {
 
     private static final String DELIMITER = "ç";
 
+    public static String parserId(String record) {
+        String[] recordSlice = record.split(DELIMITER);
+        return recordSlice[0];
+    }
+
     public static Customer parserCustomer(String record) {
         String[] recordSlice = record.split(DELIMITER);
 
