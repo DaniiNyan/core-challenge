@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 
 public class CountCustomersTest {
 
-    private static final String FILES_PATH = "/testdata";
+    private static final String FILES_PATH = "testdata/";
     private Report report;
 
 
@@ -18,7 +18,7 @@ public class CountCustomersTest {
     }
 
     @Test
-    public void mustCountCustomersOfInputFile() {
-        assertEquals(2, report.getTotalCustomers());
+    public void mustCountCustomersOfAllInputFiles() {
+        assertEquals(4, report.getTotalCustomers());
     }
 }

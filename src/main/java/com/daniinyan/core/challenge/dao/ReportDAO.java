@@ -1,5 +1,6 @@
 package com.daniinyan.core.challenge.dao;
 
+import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.parser.ReportParser;
 
 import java.io.IOException;
@@ -13,33 +14,50 @@ import java.util.stream.Stream;
 
 public class ReportDAO {
 
-    private Path filesPath;
+    private Path inputFilesPath;
+    private Path outputFilePath;
     private List<String> inputFiles = new ArrayList<>();
 
     public ReportDAO(String filesPath) {
-        this.filesPath = Paths.get(filesPath);
-        readInputFiles();
+        this.inputFilesPath = Paths.get(filesPath + "in");
+        this.outputFilePath = Paths.get(filesPath + "out");
+        findInputFiles();
     }
 
-    private void readInputFiles() {
-        try (Stream<Path> paths = Files.walk(this.filesPath)) {
+    private void findInputFiles() {
+        try (Stream<Path> paths = Files.walk(this.inputFilesPath)) {
             inputFiles = paths
-                    .filter(Files::isRegularFile)
-                    .filter(file -> file.endsWith(".dat"))
+                    .filter(file -> file.toString().endsWith(".dat"))
                     .map(Path::toString)
                     .collect(Collectors.toList());
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public List<String> getCustomers() {
+    public List<Customer> getCustomers() {
+        List<Customer> customers = new ArrayList<>();
 
-//        List<String> customers = inputFiles
-//                .stream()
-//                .map(ReportParser::parserCustomer)
-//                .collect(Collectors.toList());
+        inputFiles
+                .forEach(file -> insertCustomersFromFileToList(file, customers));
 
-        return inputFiles;
+        return customers;
+    }
+
+    private void insertCustomersFromFileToList(String filePath, List<Customer> customersList) {
+        List<String> records = new ArrayList<>();
+
+        try {
+            records = Files.readAllLines(Paths.get(filePath));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+
+        records
+                .stream()
+                .filter(record -> ReportParser.parserId(record).equals("002"))
+                .map(ReportParser::parserCustomer)
+                .forEach(customersList::add);
     }
 }
