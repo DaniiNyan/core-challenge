@@ -18,7 +18,7 @@ public class CountCustomersTest {
     }
 
     @Test
-    public void mustCountCustomersOfAllInputFiles() {
-        assertEquals(4, report.getTotalCustomers());
+    public void mustCountCustomersOfInputFile() {
+        assertEquals(4, report.getCustomers().size());
     }
 }

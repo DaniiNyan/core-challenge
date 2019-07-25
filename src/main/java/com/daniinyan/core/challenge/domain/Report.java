@@ -1,6 +1,7 @@
 package com.daniinyan.core.challenge.domain;
 
-import com.daniinyan.core.challenge.dao.ReportDAO;
+import com.daniinyan.core.challenge.dao.InputFileDAO;
+import com.daniinyan.core.challenge.dao.OutputFileDAO;
 import com.daniinyan.core.challenge.parser.ReportParser;
 
 import java.util.List;
@@ -8,21 +9,30 @@ import java.util.stream.Collectors;
 
 public class Report {
 
-    private ReportDAO reportDAO;
+    private InputFileDAO inputFileDAO;
+    private OutputFileDAO outputFileDAO;
+
+    private static final String TOTAL_COSTUMER_FIELD = "Total Costumer=";
 
     public Report(String filesPath) {
-        reportDAO = new ReportDAO(filesPath);
+        inputFileDAO = new InputFileDAO(filesPath);
+        outputFileDAO = new OutputFileDAO(filesPath);
     }
 
-    public int getTotalCustomers() {
-        return getCustomers().size();
+    public void update() {
+        setTotalCustomers();
     }
 
-    private List<Customer> getCustomers() {
-        return reportDAO.readAllInputFiles()
+    public List<Customer> getCustomers() {
+        return inputFileDAO.readAllInputFiles()
                 .stream()
                 .filter(record -> ReportParser.parserId(record).equals("002"))
                 .map(ReportParser::parserCustomer)
                 .collect(Collectors.toList());
     }
+
+    private void setTotalCustomers() {
+        outputFileDAO.updateData(TOTAL_COSTUMER_FIELD, getCustomers().size());
+    }
+
 }

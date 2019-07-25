@@ -9,15 +9,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class ReportDAO {
+public class InputFileDAO {
 
     private Path inputFilesPath;
-    private Path outputFilePath;
     private List<String> inputFiles = new ArrayList<>();
 
-    public ReportDAO(String filesPath) {
+    public InputFileDAO(String filesPath) {
         this.inputFilesPath = Paths.get(filesPath + "in");
-        this.outputFilePath = Paths.get(filesPath + "out");
         findInputFiles();
     }
 
