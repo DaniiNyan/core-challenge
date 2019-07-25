@@ -1,5 +1,6 @@
 package com.daniinyan.core.challenge.integration;
 
+import com.daniinyan.core.challenge.domain.Report;
 import org.junit.Before;
 import org.junit.Test;
 
