@@ -3,21 +3,21 @@ package com.daniinyan.core.challenge.integration;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
-import java.util.List;
+import static org.junit.Assert.assertEquals;
 
 public class CountCustomersTest {
 
-    private InputFile inputFile;
-    private static final String FILE_PATH = "";
+    private static final String FILES_PATH = "/testdata";
+    private Report report;
+
 
     @Before
-    public void setUp() throws IOException {
-        inputFile = new InputFile(FILE_PATH);
+    public void setUp() {
+        report = new Report(FILES_PATH);
     }
 
     @Test
     public void mustCountCustomersOfInputFile() {
-        List<String> customers = inputFile.getCustomers();
+        assertEquals(2, report.getTotalCustomers());
     }
 }
