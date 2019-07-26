@@ -18,8 +18,8 @@ public class OutputFileDAO {
 
     private Path outputFilePath;
 
-    public OutputFileDAO(String filesPath) {
-        this.outputFilePath = Paths.get(filesPath + OUTPUT_FILE_PATH);
+    public OutputFileDAO(String directoryPath) {
+        this.outputFilePath = Paths.get(directoryPath + OUTPUT_FILE_PATH);
         create(this.outputFilePath);
     }
 

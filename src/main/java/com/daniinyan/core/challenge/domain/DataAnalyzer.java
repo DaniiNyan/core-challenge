@@ -10,9 +10,9 @@ public class DataAnalyzer {
     private InputFileService inputFileService;
     private OutputFileService outputFileService;
 
-    public DataAnalyzer(String filesPath) {
-        inputFileService = new InputFileService(new InputFileDAO(filesPath));
-        outputFileService = new OutputFileService(new OutputFileDAO(filesPath));
+    public DataAnalyzer(String directoryPath) {
+        inputFileService = new InputFileService(new InputFileDAO(directoryPath));
+        outputFileService = new OutputFileService(new OutputFileDAO(directoryPath));
         update();
     }
 

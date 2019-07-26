@@ -17,8 +17,8 @@ public class InputFileDAO {
     private Path inputFilesPath;
     private List<String> inputFiles = new ArrayList<>();
 
-    public InputFileDAO(String filesPath) {
-        this.inputFilesPath = Paths.get(filesPath + INPUT_FILE_PATH);
+    public InputFileDAO(String directoryPath) {
+        this.inputFilesPath = Paths.get(directoryPath + INPUT_FILE_PATH);
         findInputFiles();
     }
 
