@@ -28,4 +28,15 @@ public class InputParserTest {
         assertEquals("Jose da Silva", parsedCustomer.getName());
         assertEquals("Rural", parsedCustomer.getBusinessArea());
     }
+
+    @Test
+    public void mustFindTheDelimiterFromRecord() {
+        String sample01 = "001ç2345675434544345çJose da SilvaçRural";
+        String sample02 = "002/2345675434544345/Jose da Silva/Rural";
+        String sample03 = "003-2345675434544345-Jose da Silva-Rural";
+
+        assertEquals("ç", InputParser.getDelimiter(sample01));
+        assertEquals("/", InputParser.getDelimiter(sample02));
+        assertEquals("-", InputParser.getDelimiter(sample03));
+    }
 }
