@@ -5,7 +5,7 @@ import com.daniinyan.core.challenge.dao.OutputFileDAO;
 import com.daniinyan.core.challenge.service.InputFileService;
 import com.daniinyan.core.challenge.service.OutputFileService;
 
-public class DataAnalyzer {
+public class DataAnalyzer extends Thread {
 
     private InputFileService inputFileService;
     private OutputFileService outputFileService;
@@ -15,11 +15,13 @@ public class DataAnalyzer {
         outputFileService = new OutputFileService(new OutputFileDAO(directoryPath));
     }
 
-    public void createOutputFile() {
-        outputFileService.create();
+    @Override
+    public void run() {
+        System.out.println("DataAnalyzer");
     }
 
     public void update() {
+        outputFileService.create();
         setTotalCustomers();
     }
 
