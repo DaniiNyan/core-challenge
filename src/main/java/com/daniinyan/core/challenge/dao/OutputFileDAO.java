@@ -1,7 +1,6 @@
 package com.daniinyan.core.challenge.dao;
 
 import com.daniinyan.core.challenge.domain.Field;
-import com.daniinyan.core.challenge.parser.OutputParser;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -72,15 +71,5 @@ public class OutputFileDAO {
         String worstSalesman = Field.WORST_SALESMAN.getFieldName();
 
         return Arrays.asList(totalCustomers, totalSellers, mostExpensiveSale, worstSalesman);
-    }
-
-    public int getTotalCustomers() {
-        String totalCustomersField = read()
-                .stream()
-                .filter(line -> line.contains(Field.TOTAL_CUSTOMERS.getFieldName()))
-                .collect(Collectors.toList())
-                .get(0);
-
-        return OutputParser.parserTotalCustomer(totalCustomersField);
     }
 }
