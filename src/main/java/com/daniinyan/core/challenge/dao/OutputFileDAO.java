@@ -1,5 +1,8 @@
 package com.daniinyan.core.challenge.dao;
 
+import com.daniinyan.core.challenge.domain.Field;
+import com.daniinyan.core.challenge.parser.OutputParser;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,20 +15,21 @@ import java.util.stream.Collectors;
 
 public class OutputFileDAO {
 
-    private static final String OUTPUT_FILE_NAME = "data_analysis.done.dat";
+    private static final String OUTPUT_FILE_PATH = "out/data_analysis.done.dat";
+
     private Path outputFilePath;
 
-    public OutputFileDAO(String outputFilePath) {
-        this.outputFilePath = Paths.get(outputFilePath + "out/" + OUTPUT_FILE_NAME);
+    public OutputFileDAO(String filesPath) {
+        this.outputFilePath = Paths.get(filesPath + OUTPUT_FILE_PATH);
         create(this.outputFilePath);
     }
 
-    public void updateData(String field, int totalCustomers) {
-        List<String> updatedRecord = read()
+    public void updateData(String fieldName, String value) {
+        List<String> updatedLines = read()
                 .stream()
                 .map(line -> {
-                    if(line.contains(field)) {
-                        return field + totalCustomers;
+                    if(line.contains(fieldName)) {
+                        return fieldName + value;
                     }
                     return line;
                 }).collect(Collectors.toList());
@@ -33,13 +37,13 @@ public class OutputFileDAO {
         try {
             Files.delete(outputFilePath);
             Files.createFile(outputFilePath);
-            Files.write(outputFilePath, updatedRecord, StandardOpenOption.APPEND);
+            Files.write(outputFilePath, updatedLines, StandardOpenOption.APPEND);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public List<String> read() {
+    private List<String> read() {
         List<String> records = new ArrayList<>();
 
         try {
@@ -62,11 +66,21 @@ public class OutputFileDAO {
     }
 
     private List<String> getDefaultLines() {
-        String totalCustomers = "Total Customers=\n";
-        String totalSellers = "Total Sellers=\n";
-        String mostExpensiveSale = "ID of the most expensive sale=\n";
-        String worstSalesman = "Worst salesman=";
+        String totalCustomers = Field.TOTAL_CUSTOMERS.getFieldName();
+        String totalSellers = Field.TOTAL_SELLERS.getFieldName();
+        String mostExpensiveSale = Field.MOST_EXPENSIVE_SALE.getFieldName();
+        String worstSalesman = Field.WORST_SALESMAN.getFieldName();
 
         return Arrays.asList(totalCustomers, totalSellers, mostExpensiveSale, worstSalesman);
+    }
+
+    public int getTotalCustomers() {
+        String totalCustomersField = read()
+                .stream()
+                .filter(line -> line.contains(Field.TOTAL_CUSTOMERS.getFieldName()))
+                .collect(Collectors.toList())
+                .get(0);
+
+        return OutputParser.parserTotalCustomer(totalCustomersField);
     }
 }
