@@ -2,18 +2,17 @@ package com.daniinyan.core.challenge.domain;
 
 import com.daniinyan.core.challenge.dao.InputFileDAO;
 import com.daniinyan.core.challenge.dao.OutputFileDAO;
-import com.daniinyan.core.challenge.parser.InputParser;
+import com.daniinyan.core.challenge.service.InputFileService;
+import com.daniinyan.core.challenge.service.OutputFileService;
 
 public class DataAnalyzer {
 
-    private InputFileDAO inputFileDAO;
-    private OutputFileDAO outputFileDAO;
-
-    private static final String ID_CUSTOMER = "002";
+    private InputFileService inputFileService;
+    private OutputFileService outputFileService;
 
     public DataAnalyzer(String filesPath) {
-        inputFileDAO = new InputFileDAO(filesPath);
-        outputFileDAO = new OutputFileDAO(filesPath);
+        inputFileService = new InputFileService(new InputFileDAO(filesPath));
+        outputFileService = new OutputFileService(new OutputFileDAO(filesPath));
         update();
     }
 
@@ -21,21 +20,10 @@ public class DataAnalyzer {
         setTotalCustomers();
     }
 
-    public int getCustomers() {
-        update();
-        return outputFileDAO.getTotalCustomers();
-    }
-
     private void setTotalCustomers() {
-        outputFileDAO.updateData(Field.TOTAL_CUSTOMERS.getFieldName(), String.valueOf(countCustomers()));
-    }
-
-    private long countCustomers() {
-        return inputFileDAO
-                .readAllInputFiles()
-                .stream()
-                .filter(record -> InputParser.parserId(record).equals(ID_CUSTOMER))
-                .count();
+        String fieldName = Field.TOTAL_CUSTOMERS.getFieldName();
+        long numberOfCostumers =  inputFileService.countCustomers();
+        outputFileService.updateTotalCustomers(fieldName, numberOfCostumers);
     }
 
 }
