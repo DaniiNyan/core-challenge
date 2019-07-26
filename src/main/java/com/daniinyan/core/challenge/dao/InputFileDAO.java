@@ -19,6 +19,15 @@ public class InputFileDAO {
         findInputFiles();
     }
 
+    public List<String> readAllInputFiles() {
+        List<String> allRecordsList = new ArrayList<>();
+
+        inputFiles
+                .forEach(file -> insertRecordsFromFileToList(file, allRecordsList));
+
+        return allRecordsList;
+    }
+
     private void findInputFiles() {
         try (Stream<Path> paths = Files.walk(this.inputFilesPath)) {
             inputFiles = paths
@@ -29,15 +38,6 @@ public class InputFileDAO {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    public List<String> readAllInputFiles() {
-        List<String> allRecordsList = new ArrayList<>();
-
-        inputFiles
-                .forEach(file -> insertRecordsFromFileToList(file, allRecordsList));
-
-        return allRecordsList;
     }
 
     private void insertRecordsFromFileToList(String filePath, List<String> allRecordsList) {
