@@ -42,6 +42,16 @@ public class OutputFileDAO {
         }
     }
 
+    public void create() {
+        try {
+            Files.deleteIfExists(outputFilePath);
+            Files.createFile(outputFilePath);
+            Files.write(outputFilePath, getDefaultLines(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
     private List<String> read() {
         List<String> records = new ArrayList<>();
 
@@ -52,16 +62,6 @@ public class OutputFileDAO {
         }
 
         return records;
-    }
-
-    public void create() {
-        try {
-            Files.deleteIfExists(outputFilePath);
-            Files.createFile(outputFilePath);
-            Files.write(outputFilePath, getDefaultLines(), StandardOpenOption.APPEND);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     private List<String> getDefaultLines() {
