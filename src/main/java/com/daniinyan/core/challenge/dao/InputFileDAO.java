@@ -11,11 +11,14 @@ import java.util.stream.Stream;
 
 public class InputFileDAO {
 
+    private static final String INPUT_FILE_PATH = "in";
+    private static final String SUPPORTED_FILE_EXTENSION = ".dat";
+
     private Path inputFilesPath;
     private List<String> inputFiles = new ArrayList<>();
 
     public InputFileDAO(String filesPath) {
-        this.inputFilesPath = Paths.get(filesPath + "in");
+        this.inputFilesPath = Paths.get(filesPath + INPUT_FILE_PATH);
         findInputFiles();
     }
 
@@ -31,7 +34,7 @@ public class InputFileDAO {
     private void findInputFiles() {
         try (Stream<Path> paths = Files.walk(this.inputFilesPath)) {
             inputFiles = paths
-                    .filter(file -> file.toString().endsWith(".dat"))
+                    .filter(file -> file.toString().endsWith(SUPPORTED_FILE_EXTENSION))
                     .map(Path::toString)
                     .collect(Collectors.toList());
 
