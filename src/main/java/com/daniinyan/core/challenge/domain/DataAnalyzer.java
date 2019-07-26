@@ -2,37 +2,41 @@ package com.daniinyan.core.challenge.domain;
 
 import com.daniinyan.core.challenge.dao.InputFileDAO;
 import com.daniinyan.core.challenge.dao.OutputFileDAO;
-import com.daniinyan.core.challenge.parser.ReportParser;
+import com.daniinyan.core.challenge.parser.InputParser;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-public class Report {
+public class DataAnalyzer {
 
     private InputFileDAO inputFileDAO;
     private OutputFileDAO outputFileDAO;
 
-    private static final String TOTAL_COSTUMER_FIELD = "Total Costumer=";
+    private static final String TOTAL_CUSTOMER_FIELD = "Total Customers=";
+    private static final String ID_CUSTOMER = "002";
 
-    public Report(String filesPath) {
+    public DataAnalyzer(String filesPath) {
         inputFileDAO = new InputFileDAO(filesPath);
         outputFileDAO = new OutputFileDAO(filesPath);
+        update();
     }
 
     public void update() {
         setTotalCustomers();
     }
 
-    public List<Customer> getCustomers() {
-        return inputFileDAO.readAllInputFiles()
-                .stream()
-                .filter(record -> ReportParser.parserId(record).equals("002"))
-                .map(ReportParser::parserCustomer)
-                .collect(Collectors.toList());
+    public int getCustomers() {
+        update();
+        return outputFileDAO.getTotalCustomers();
     }
 
     private void setTotalCustomers() {
-        outputFileDAO.updateData(TOTAL_COSTUMER_FIELD, getCustomers().size());
+        outputFileDAO.updateData(TOTAL_CUSTOMER_FIELD, String.valueOf(countCustomers()));
+    }
+
+    private long countCustomers() {
+        return inputFileDAO
+                .readAllInputFiles()
+                .stream()
+                .filter(record -> InputParser.parserId(record).equals(ID_CUSTOMER))
+                .count();
     }
 
 }
