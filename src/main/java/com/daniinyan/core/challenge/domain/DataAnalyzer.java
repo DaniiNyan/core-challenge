@@ -9,7 +9,6 @@ public class DataAnalyzer {
     private InputFileDAO inputFileDAO;
     private OutputFileDAO outputFileDAO;
 
-    private static final String TOTAL_CUSTOMER_FIELD = "Total Customers=";
     private static final String ID_CUSTOMER = "002";
 
     public DataAnalyzer(String filesPath) {
@@ -28,7 +27,7 @@ public class DataAnalyzer {
     }
 
     private void setTotalCustomers() {
-        outputFileDAO.updateData(TOTAL_CUSTOMER_FIELD, String.valueOf(countCustomers()));
+        outputFileDAO.updateData(Field.TOTAL_CUSTOMERS.getFieldName(), String.valueOf(countCustomers()));
     }
 
     private long countCustomers() {
