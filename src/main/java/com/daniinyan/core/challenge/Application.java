@@ -1,10 +1,10 @@
 package com.daniinyan.core.challenge;
 
-import com.daniinyan.core.challenge.domain.Report;
+import com.daniinyan.core.challenge.domain.DataAnalyzer;
 
 public class Application {
     public static void main(String[] args) {
-        Report report = new Report("data");
-        report.update();
+        DataAnalyzer dataAnalyzer = new DataAnalyzer("data");
+        dataAnalyzer.update();
     }
 }

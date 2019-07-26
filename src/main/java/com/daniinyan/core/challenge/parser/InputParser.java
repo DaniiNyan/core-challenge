@@ -2,7 +2,7 @@ package com.daniinyan.core.challenge.parser;
 
 import com.daniinyan.core.challenge.domain.Customer;
 
-public class ReportParser {
+public class InputParser {
 
     private static final String DELIMITER = "ç";
 
