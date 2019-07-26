@@ -20,10 +20,10 @@ public class OutputFileDAO {
 
     public OutputFileDAO(String directoryPath) {
         this.outputFilePath = Paths.get(directoryPath + OUTPUT_FILE_PATH);
-        create(this.outputFilePath);
     }
 
     public void updateData(String fieldName, String value) {
+        create();
         List<String> updatedLines = read()
                 .stream()
                 .map(line -> {
@@ -54,7 +54,7 @@ public class OutputFileDAO {
         return records;
     }
 
-    private void create(Path outputFilePath) {
+    public void create() {
         try {
             Files.deleteIfExists(outputFilePath);
             Files.createFile(outputFilePath);

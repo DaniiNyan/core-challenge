@@ -13,4 +13,8 @@ public class OutputFileService {
     public void updateTotalCustomers(String fieldName, long numberOfCustomers) {
         outputFileDAO.updateData(fieldName, String.valueOf(numberOfCustomers));
     }
+
+    public void create() {
+        outputFileDAO.create();
+    }
 }

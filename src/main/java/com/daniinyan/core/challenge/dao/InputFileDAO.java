@@ -19,10 +19,10 @@ public class InputFileDAO {
 
     public InputFileDAO(String directoryPath) {
         this.inputFilesPath = Paths.get(directoryPath + INPUT_FILE_PATH);
-        findInputFiles();
     }
 
     public List<String> readAllInputFiles() {
+        findInputFiles();
         List<String> allRecordsList = new ArrayList<>();
 
         inputFiles

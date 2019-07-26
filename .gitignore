@@ -12,3 +12,4 @@ settings.gradle
 /.recommenders/
 /out/
 /testdata/*
+/data/*

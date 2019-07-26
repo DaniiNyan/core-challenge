@@ -13,7 +13,10 @@ public class DataAnalyzer {
     public DataAnalyzer(String directoryPath) {
         inputFileService = new InputFileService(new InputFileDAO(directoryPath));
         outputFileService = new OutputFileService(new OutputFileDAO(directoryPath));
-        update();
+    }
+
+    public void createOutputFile() {
+        outputFileService.create();
     }
 
     public void update() {
