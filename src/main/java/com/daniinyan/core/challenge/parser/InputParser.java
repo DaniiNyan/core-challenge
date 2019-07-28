@@ -2,6 +2,7 @@ package com.daniinyan.core.challenge.parser;
 
 import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Item;
+import com.daniinyan.core.challenge.domain.Sale;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,16 @@ public class InputParser {
     public static long parseSaleId(String record) {
         String[] recordSlice = record.split(getDelimiter(record));
         return Long.parseLong(recordSlice[1]);
+    }
+
+    public static Sale parseSale(String record) {
+        String[] recordSlice = record.split(getDelimiter(record));
+
+        long id = Long.parseLong(recordSlice[1]);
+        List<Item> items = parseItems(record);
+        String salesmanName = recordSlice[3];
+
+        return new Sale(id, items, salesmanName);
     }
 
     public static List<Item> parseItems(String record) {
