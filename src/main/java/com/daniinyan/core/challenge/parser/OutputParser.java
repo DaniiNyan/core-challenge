@@ -4,8 +4,14 @@ public class OutputParser {
 
     private static final String DELIMITER = "=";
 
-    public static int parserTotalCustomer(String record) {
+    public static int parserTotalCustomers(String record) {
         String[] recordSlice = record.split(DELIMITER);
         return Integer.parseInt(recordSlice[1]);
+    }
+
+    public static int parserTotalSellers(String record) {
+        String[] recordSlice = record.split(DELIMITER);
+        return Integer.parseInt(recordSlice[1]);
+
     }
 }
