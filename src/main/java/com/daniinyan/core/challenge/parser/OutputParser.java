@@ -4,14 +4,19 @@ public class OutputParser {
 
     private static final String DELIMITER = "=";
 
-    public static int parserTotalCustomers(String record) {
+    public static int parseTotalCustomers(String record) {
         String[] recordSlice = record.split(DELIMITER);
         return Integer.parseInt(recordSlice[1]);
     }
 
-    public static int parserTotalSellers(String record) {
+    public static int parseTotalSellers(String record) {
         String[] recordSlice = record.split(DELIMITER);
         return Integer.parseInt(recordSlice[1]);
 
+    }
+
+    public static int parseMostExpensiveSale(String record) {
+        String[] recordSlice = record.split(DELIMITER);
+        return Integer.parseInt(recordSlice[1]);
     }
 }

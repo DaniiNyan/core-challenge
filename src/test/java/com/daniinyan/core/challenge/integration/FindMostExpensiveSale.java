@@ -37,7 +37,7 @@ public class FindMostExpensiveSale {
                 .collect(Collectors.toList())
                 .get(0);
 
-        assertEquals(4, OutputParser.parserMostExpensiveSale(mostExpensiveSaleField));
+        assertEquals(4, OutputParser.parseMostExpensiveSale(mostExpensiveSaleField));
     }
 
     private List<String> readOutputFile() {

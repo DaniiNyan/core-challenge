@@ -36,7 +36,7 @@ public class CountSellersTest {
                 .collect(Collectors.toList())
                 .get(0);
 
-        assertEquals(5, OutputParser.parserTotalSellers(totalSellersField));
+        assertEquals(5, OutputParser.parseTotalSellers(totalSellersField));
     }
 
     private List<String> readOutputFile() {
