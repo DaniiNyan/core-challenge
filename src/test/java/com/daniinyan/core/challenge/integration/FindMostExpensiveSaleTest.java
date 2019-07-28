@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
-public class FindMostExpensiveSale {
+public class FindMostExpensiveSaleTest {
 
     private static final String FILES_PATH = "testdata/";
     private static final String OUTPUT_FILE_PATH = FILES_PATH + "out/data_analysis.done.dat";
@@ -37,7 +37,7 @@ public class FindMostExpensiveSale {
                 .collect(Collectors.toList())
                 .get(0);
 
-        assertEquals(4, OutputParser.parseMostExpensiveSale(mostExpensiveSaleField));
+        assertEquals(10, OutputParser.parseMostExpensiveSale(mostExpensiveSaleField));
     }
 
     private List<String> readOutputFile() {

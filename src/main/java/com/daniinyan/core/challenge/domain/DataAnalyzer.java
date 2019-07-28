@@ -24,6 +24,7 @@ public class DataAnalyzer extends Thread {
         outputFileService.create();
         setTotalCustomers();
         setTotalSellers();
+        setMostExpensiveSale();
     }
 
     public void setTotalCustomers() {
@@ -38,4 +39,9 @@ public class DataAnalyzer extends Thread {
         outputFileService.updateTotalSellers(fieldName, numberOfSellers);
     }
 
+    public void setMostExpensiveSale() {
+        String fieldName = Field.MOST_EXPENSIVE_SALE.getFieldName();
+        long idFromMostExpensiveSale = inputFileService.getMostExpensiveSale();
+        outputFileService.updateMostExpensiveSale(fieldName, idFromMostExpensiveSale);
+    }
 }
