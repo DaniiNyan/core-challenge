@@ -27,6 +27,11 @@ public class InputParser {
         return new Customer(cnpj, name, business);
     }
 
+    public static long parseSaleId(String record) {
+        String[] recordSlice = record.split(getDelimiter(record));
+        return Long.parseLong(recordSlice[1]);
+    }
+
     public static List<Item> parseItems(String record) {
         String[] recordSlice = record.split(getDelimiter(record));
         String itemsRecord = recordSlice[2];

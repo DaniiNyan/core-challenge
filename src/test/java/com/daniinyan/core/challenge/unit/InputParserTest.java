@@ -53,4 +53,10 @@ public class InputParserTest {
         assertEquals(10, itemsFound.get(0).getQuantity());
         assertEquals(new Double(100.0), itemsFound.get(0).getPrice());
     }
+
+    @Test
+    public void mustReturnIdFromSaleRecord() {
+        String saleRecord = "003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çDiego";
+        assertEquals(10, InputParser.parseSaleId(saleRecord));
+    }
 }
