@@ -29,6 +29,8 @@ public class CountCustomersTest {
 
     @Test
     public void mustCountCustomersOfInputFileAndWriteInOutputFile() {
+        dataAnalyzer.setTotalCustomers();
+
         String totalCustomersField = readOutputFile()
                 .stream()
                 .filter(line -> line.contains(Field.TOTAL_CUSTOMERS.getFieldName()))
