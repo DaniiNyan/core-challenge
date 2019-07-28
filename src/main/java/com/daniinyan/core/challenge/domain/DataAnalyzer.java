@@ -23,12 +23,19 @@ public class DataAnalyzer extends Thread {
     public void update() {
         outputFileService.create();
         setTotalCustomers();
+        setTotalSellers();
     }
 
-    private void setTotalCustomers() {
+    public void setTotalCustomers() {
         String fieldName = Field.TOTAL_CUSTOMERS.getFieldName();
-        long numberOfCostumers =  inputFileService.countCustomers();
+        long numberOfCostumers = inputFileService.countCustomers();
         outputFileService.updateTotalCustomers(fieldName, numberOfCostumers);
+    }
+
+    public void setTotalSellers() {
+        String fieldName = Field.TOTAL_SELLERS.getFieldName();
+        long numberOfSellers = inputFileService.countSellers();
+        outputFileService.updateTotalSellers(fieldName, numberOfSellers);
     }
 
 }

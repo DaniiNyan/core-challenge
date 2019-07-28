@@ -10,11 +10,15 @@ public class OutputFileService {
         this.outputFileDAO = outputFileDAO;
     }
 
+    public void create() {
+        outputFileDAO.create();
+    }
+
     public void updateTotalCustomers(String fieldName, long numberOfCustomers) {
         outputFileDAO.updateData(fieldName, String.valueOf(numberOfCustomers));
     }
 
-    public void create() {
-        outputFileDAO.create();
+    public void updateTotalSellers(String fieldName, long numberOfSellers) {
+        outputFileDAO.updateData(fieldName, String.valueOf(numberOfSellers));
     }
 }

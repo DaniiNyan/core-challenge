@@ -5,6 +5,7 @@ import com.daniinyan.core.challenge.parser.InputParser;
 
 public class InputFileService {
 
+    private static final String ID_SALESMAN = "001";
     private static final String ID_CUSTOMER = "002";
 
     private InputFileDAO inputFileDAO;
@@ -18,6 +19,14 @@ public class InputFileService {
                 .readAllInputFiles()
                 .stream()
                 .filter(record -> InputParser.parserId(record).equals(ID_CUSTOMER))
+                .count();
+    }
+
+    public long countSellers() {
+        return inputFileDAO
+                .readAllInputFiles()
+                .stream()
+                .filter(record -> InputParser.parserId(record).equals(ID_SALESMAN))
                 .count();
     }
 }

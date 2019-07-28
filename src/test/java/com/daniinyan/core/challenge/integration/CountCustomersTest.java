@@ -35,7 +35,7 @@ public class CountCustomersTest {
                 .collect(Collectors.toList())
                 .get(0);
 
-        assertEquals(4, OutputParser.parserTotalCustomer(totalCustomersField));
+        assertEquals(4, OutputParser.parserTotalCustomers(totalCustomersField));
     }
 
     private List<String> readOutputFile() {
