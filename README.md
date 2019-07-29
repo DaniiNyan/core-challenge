@@ -1,6 +1,4 @@
 # Core Challenge
-Final challenge from ilegra's Core Engineering 2019.2 trail.
-
 ---
 ### Summary:
 - What is this?
@@ -63,5 +61,5 @@ The system was built using TDD and has 85% test coverage.
 - Test with a mock framework;
 
 ## Final considerations
-This was the final challenge from ilegra's Core Engineering 2019.2 trail. 
+This was the final challenge from ilegra's Core Engineering 2019.2 trail. <br>
 All participants had four days (24 work hours) to do it individually. 
