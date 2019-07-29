@@ -27,7 +27,8 @@ Sales data: id 003 <br>
 The system support almost every delimiter including `ç`. Feel free to test it with another one like `/`, `-` or anyone you prefer.
 
 ---
-The system analyse all data inside `data/in` folder, analyse it and write a report in `data/out` folder with:
+System analyses all data inside `data/in` folder and write a report in `data/out` folder. <br>
+Report has the following fields:
 - Amount of customers;
 - Amount of sellers;
 - ID from most expensive sale;
