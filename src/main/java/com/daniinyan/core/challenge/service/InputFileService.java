@@ -1,7 +1,9 @@
 package com.daniinyan.core.challenge.service;
 
 import com.daniinyan.core.challenge.dao.InputFileDAO;
+import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Sale;
+import com.daniinyan.core.challenge.domain.Salesman;
 import com.daniinyan.core.challenge.parser.InputParser;
 
 import java.util.Comparator;
@@ -34,14 +36,13 @@ public class InputFileService {
                 .count();
     }
 
-    public long getMostExpensiveSale() {
+    public Sale getMostExpensiveSale() {
         return inputFileDAO
                 .readAllInputFiles()
                 .stream()
                 .filter(record -> InputParser.parseId(record).equals(ID_SALE))
                 .map(InputParser::parseSale)
                 .max(Comparator.comparing(Sale::getTotal))
-                .get()
-                .getId();
+                .get();
     }
 }

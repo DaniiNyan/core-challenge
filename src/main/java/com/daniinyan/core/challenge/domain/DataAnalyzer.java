@@ -41,7 +41,8 @@ public class DataAnalyzer extends Thread {
 
     public void setMostExpensiveSale() {
         String fieldName = Field.MOST_EXPENSIVE_SALE.getFieldName();
-        long idFromMostExpensiveSale = inputFileService.getMostExpensiveSale();
+        long idFromMostExpensiveSale = inputFileService.getMostExpensiveSale().getId();
         outputFileService.updateMostExpensiveSale(fieldName, idFromMostExpensiveSale);
     }
+
 }
