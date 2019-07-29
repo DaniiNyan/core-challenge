@@ -3,6 +3,7 @@ package com.daniinyan.core.challenge.unit;
 import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Item;
 import com.daniinyan.core.challenge.domain.Sale;
+import com.daniinyan.core.challenge.domain.Salesman;
 import com.daniinyan.core.challenge.parser.InputParser;
 import org.junit.Test;
 
@@ -21,6 +22,17 @@ public class InputParserTest {
         assertEquals("ç", InputParser.getDelimiter(sample01));
         assertEquals("/", InputParser.getDelimiter(sample02));
         assertEquals("-", InputParser.getDelimiter(sample03));
+    }
+
+    @Test
+    public void mustReturnIdFromRecord() {
+        String salesmanRecord = "001ç1234567891234çDiegoç50000";
+        String customerRecord = "002ç2345675434544345çJose da SilvaçRural";
+        String saleRecord = "003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çDiego";
+
+        assertEquals("001", InputParser.parseId(salesmanRecord));
+        assertEquals("002", InputParser.parseId(customerRecord));
+        assertEquals("003", InputParser.parseId(saleRecord));
     }
 
     @Test
@@ -45,14 +57,13 @@ public class InputParserTest {
     }
 
     @Test
-    public void mustReturnIdFromRecord() {
+    public void mustReturnSalesmanFromRecord() {
         String salesmanRecord = "001ç1234567891234çDiegoç50000";
-        String customerRecord = "002ç2345675434544345çJose da SilvaçRural";
-        String saleRecord = "003ç10ç[1-10-100,2-30-2.50,3-40-3.10]çDiego";
+        Salesman salesmanFound = InputParser.parseSalesman(salesmanRecord);
 
-        assertEquals("001", InputParser.parseId(salesmanRecord));
-        assertEquals("002", InputParser.parseId(customerRecord));
-        assertEquals("003", InputParser.parseId(saleRecord));
+        assertEquals("1234567891234", salesmanFound.getCpf());
+        assertEquals("Diego", salesmanFound.getName());
+        assertEquals(new Double(50000), salesmanFound.getSalary());
     }
 
     @Test

@@ -3,6 +3,7 @@ package com.daniinyan.core.challenge.parser;
 import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Item;
 import com.daniinyan.core.challenge.domain.Sale;
+import com.daniinyan.core.challenge.domain.Salesman;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,5 +59,15 @@ public class InputParser {
             itemsList.add(new Item(id, quantity, price));
         }
         return itemsList;
+    }
+
+    public static Salesman parseSalesman(String record) {
+        String[] recordSlice = record.split(getDelimiter(record));
+
+        String cpf = recordSlice[1];
+        String name = recordSlice[2];
+        Double salary = Double.parseDouble(recordSlice[3]);
+
+        return new Salesman(cpf, name, salary);
     }
 }
