@@ -1,7 +1,4 @@
-package com.daniinyan.core.challenge;
-
-import com.daniinyan.core.challenge.domain.DataAnalyzer;
-import com.daniinyan.core.challenge.domain.FilePath;
+package com.daniinyan.core.challenge.domain;
 
 import java.io.IOException;
 import java.nio.file.*;
@@ -12,7 +9,7 @@ public class Watcher extends Thread {
     private String directoryPathToWatch;
 
     public Watcher() {
-        this.dataAnalyzer = new DataAnalyzer(FilePath.DEFAULT_FOLDER.getPath());
+        this.dataAnalyzer = new DataAnalyzer();
         this.directoryPathToWatch = FilePath.DEFAULT_FOLDER.getPath() + FilePath.INPUT_FOLDER.getPath();
     }
 
