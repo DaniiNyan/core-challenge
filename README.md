@@ -1,17 +1,17 @@
 # Core Challenge
 
 ### Summary:
-- What is this?
+- What is?
 - How it works?
 - Architecture
 - Future features
-- Final considerations
+- About the challenge
 
-## What is this?
-This is a data analysis system. It's able to read a lot of specific flat files, analyse the data inside it and output a report. 
+## What is?
+It's a data analysis system. It's able to read a lot of specific flat files, analyse the data inside it and output a report. 
 
 ## How it works?
-This system reads all `.dat` files from `/data/in` folder. 
+The system reads all `.dat` files from `/data/in` folder. 
 To be read, files must contain data in one of the three following format:
 <br>
 
@@ -35,7 +35,7 @@ Report has the following fields:
 - ID from most expensive sale;
 - Name of worst salesman;
 
-To work correctly, the `data_analysis.done.dat` file must already exist in `data/out` folder. 
+To work correctly, the `data_analysis.done.dat` file must already exists in `data/out` folder. 
 This file is updated every time a change occurs inside `data/in` folder. 
 
 ## Architecture
@@ -57,6 +57,6 @@ The system was built using TDD and has 85% test coverage.
 - Support escaped delimiters;
 - Test with a mock framework;
 
-## Final considerations
+## About the challenge
 This was the final challenge from ilegra's Core Engineering 2019.2 trail. <br>
 All participants had four days (24 work hours) to do it individually.
