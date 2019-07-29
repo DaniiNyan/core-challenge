@@ -12,7 +12,7 @@ This is a data analysis system. It's able to read a lot of specific flat files, 
 
 ## How it works?
 This system reads all `.dat` files from `/data/in` folder. 
-The files must be in one of the three following format:
+To be read, files must have data in one of the three following format:
 <br>
 
 Salesman data: id 001 <br>
@@ -24,8 +24,8 @@ Customer data: id 002 <br>
 Sales data: id 003 <br>
 - `003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name`
 
+A single file can have one or more data type. All of them are identified by ID. <br>
 The system support almost every delimiter including `ç`. Feel free to test it with another one like `/`, `-` or anyone you prefer.
-
 ---
 System analyses all data inside `data/in` folder and write a report in `data/out` folder. <br>
 Report has the following fields:
@@ -38,7 +38,7 @@ To work correctly, the `data_analysis.done.dat` file must already exist in `data
 This file is updated every time a change occurs inside `data/in` folder. 
 
 ## Architecture
-This system has four modules: <br>
+System has four modules: <br>
 - DAO: to read input file and write the output;
 - Service: to process data from DAO, analyse and return a result;
 - Parser: to help Service parse Strings from DAO to system's objects;
@@ -58,4 +58,4 @@ The system was built using TDD and has 85% test coverage.
 
 ## Final considerations
 This was the final challenge from ilegra's Core Engineering 2019.2 trail. <br>
-All participants had four days (24 work hours) to do it individually. 
+All participants had four days (24 work hours) to do it individually.
