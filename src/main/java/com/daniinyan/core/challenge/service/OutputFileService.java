@@ -14,19 +14,11 @@ public class OutputFileService {
         outputFileDAO.create();
     }
 
-    public void updateTotalCustomers(String fieldName, long numberOfCustomers) {
-        outputFileDAO.updateData(fieldName, String.valueOf(numberOfCustomers));
+    public void updateField(String fieldName, long fieldValue) {
+        outputFileDAO.updateData(fieldName, String.valueOf(fieldValue));
     }
 
-    public void updateTotalSellers(String fieldName, long numberOfSellers) {
-        outputFileDAO.updateData(fieldName, String.valueOf(numberOfSellers));
-    }
-
-    public void updateMostExpensiveSale(String fieldName, long idFromMostExpensiveSale) {
-        outputFileDAO.updateData(fieldName, String.valueOf(idFromMostExpensiveSale));
-    }
-
-    public void updateWorstSalesman(String fieldName, String worstSalesmanName) {
-        outputFileDAO.updateData(fieldName, worstSalesmanName);
+    public void updateField(String fieldName, String fieldValue) {
+        outputFileDAO.updateData(fieldName, fieldValue);
     }
 }

@@ -31,24 +31,24 @@ public class DataAnalyzer extends Thread {
     public void setTotalCustomers() {
         String fieldName = Field.TOTAL_CUSTOMERS.getFieldName();
         long numberOfCostumers = inputFileService.countCustomers();
-        outputFileService.updateTotalCustomers(fieldName, numberOfCostumers);
+        outputFileService.updateField(fieldName, numberOfCostumers);
     }
 
     public void setTotalSellers() {
         String fieldName = Field.TOTAL_SELLERS.getFieldName();
         long numberOfSellers = inputFileService.countSellers();
-        outputFileService.updateTotalSellers(fieldName, numberOfSellers);
+        outputFileService.updateField(fieldName, numberOfSellers);
     }
 
     public void setMostExpensiveSale() {
         String fieldName = Field.MOST_EXPENSIVE_SALE.getFieldName();
         long idFromMostExpensiveSale = inputFileService.getMostExpensiveSale().getId();
-        outputFileService.updateMostExpensiveSale(fieldName, idFromMostExpensiveSale);
+        outputFileService.updateField(fieldName, idFromMostExpensiveSale);
     }
 
     public void setWorstSalesman() {
         String fieldName = Field.WORST_SALESMAN.getFieldName();
         String worstSalesmanName = inputFileService.getWorstSalesman().getName();
-        outputFileService.updateWorstSalesman(fieldName, worstSalesmanName);
+        outputFileService.updateField(fieldName, worstSalesmanName);
     }
 }
