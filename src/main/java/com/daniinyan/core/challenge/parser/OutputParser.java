@@ -19,4 +19,9 @@ public class OutputParser {
         String[] recordSlice = record.split(DELIMITER);
         return Integer.parseInt(recordSlice[1]);
     }
+
+    public static String parseWorstSalesman(String record) {
+        String[] recordSlice = record.split(DELIMITER);
+        return recordSlice[1];
+    }
 }

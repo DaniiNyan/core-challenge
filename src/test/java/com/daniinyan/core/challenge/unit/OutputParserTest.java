@@ -20,8 +20,14 @@ public class OutputParserTest {
     }
 
     @Test
-    public void mustReturnIdFromMostExpensiveSale() {
+    public void mustReturnIdFromMostExpensiveSaleFromRecord() {
         String record = "ID Most Expensive Sale=22";
         assertEquals(22, OutputParser.parseMostExpensiveSale(record));
+    }
+
+    @Test
+    public void mustReturnNameFromWorstSalesmanFromRecord() {
+        String record = "Worst Salesman=Alexia";
+        assertEquals("Alexia", OutputParser.parseWorstSalesman(record));
     }
 }
