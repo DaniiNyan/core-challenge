@@ -1,6 +1,5 @@
 package com.daniinyan.core.challenge.unit;
 
-import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Item;
 import com.daniinyan.core.challenge.domain.Sale;
 import com.daniinyan.core.challenge.domain.Salesman;
@@ -33,16 +32,6 @@ public class InputParserTest {
         assertEquals("001", InputParser.parseId(salesmanRecord));
         assertEquals("002", InputParser.parseId(customerRecord));
         assertEquals("003", InputParser.parseId(saleRecord));
-    }
-
-    @Test
-    public void mustReturnCustomerFromRecord() {
-        String record = "002ç2345675434544345çJose da SilvaçRural";
-        Customer parsedCustomer = InputParser.parseCustomer(record);
-
-        assertEquals("2345675434544345", parsedCustomer.getCnpj());
-        assertEquals("Jose da Silva", parsedCustomer.getName());
-        assertEquals("Rural", parsedCustomer.getBusinessArea());
     }
 
     @Test

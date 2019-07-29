@@ -1,6 +1,5 @@
 package com.daniinyan.core.challenge.parser;
 
-import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Item;
 import com.daniinyan.core.challenge.domain.Sale;
 import com.daniinyan.core.challenge.domain.Salesman;
@@ -17,16 +16,6 @@ public class InputParser {
     public static String parseId(String record) {
         String[] recordSlice = record.split(getDelimiter(record));
         return recordSlice[0];
-    }
-
-    public static Customer parseCustomer(String record) {
-        String[] recordSlice = record.split(getDelimiter(record));
-
-        String cnpj = recordSlice[1];
-        String name = recordSlice[2];
-        String business = recordSlice[3];
-
-        return new Customer(cnpj, name, business);
     }
 
     public static long parseSaleId(String record) {
