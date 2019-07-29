@@ -17,11 +17,11 @@ public class DataAnalyzer extends Thread {
 
     @Override
     public void run() {
-        System.out.println("DataAnalyzer");
+        outputFileService.create();
+        update();
     }
 
     public void update() {
-        outputFileService.create();
         setTotalCustomers();
         setTotalSellers();
         setMostExpensiveSale();

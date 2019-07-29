@@ -7,7 +7,7 @@ public class Application {
         Watcher watcher = new Watcher("data/");
         DataAnalyzer dataAnalyzer = new DataAnalyzer("data/");
 
-        watcher.start();
         dataAnalyzer.start();
+        watcher.start();
     }
 }

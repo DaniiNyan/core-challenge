@@ -23,7 +23,6 @@ public class OutputFileDAO {
     }
 
     public void updateData(String fieldName, String value) {
-        create();
         List<String> updatedLines = read()
                 .stream()
                 .map(line -> {

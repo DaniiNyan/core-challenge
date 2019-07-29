@@ -21,7 +21,12 @@ public class Watcher extends Thread {
     public void run() {
         while(true) {
             watchInput();
-            System.out.println("Watcher");
+
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) {
+                System.out.println("Erro: " + e.getMessage());
+            }
         }
     }
 
@@ -37,13 +42,9 @@ public class Watcher extends Thread {
                     StandardWatchEventKinds.ENTRY_MODIFY);
 
             WatchKey key;
-            System.out.println("Watch");
             while ((key = watchService.take()) != null) {
                 for (WatchEvent<?> event : key.pollEvents()) {
                     dataAnalyzer.update();
-                    System.out.println("Update");
-                    Object context = event.context();
-                    System.out.println( String.format( "Event %s, type %s", context, event.kind()));
                 }
                 key.reset();
             }
