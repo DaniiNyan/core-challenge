@@ -6,7 +6,6 @@
 - Architecture
 - Future features
 - Final considerations
----
 
 ## What is this?
 This is a data analysis system. It's able to read a lot of specific flat files, analyse the data inside it and output a report. 
