@@ -12,7 +12,7 @@ This is a data analysis system. It's able to read a lot of specific flat files, 
 
 ## How it works?
 This system reads all `.dat` files from `/data/in` folder. 
-To be read, files must have data in one of the three following format:
+To be read, files must contain data in one of the three following format:
 <br>
 
 Salesman data: id 001 <br>
@@ -25,7 +25,7 @@ Sales data: id 003 <br>
 - `003çSale IDç[Item ID-Item Quantity-Item Price]çSalesman name`
 
 A single file can have one or more data type. All of them are identified by ID. <br>
-The system support almost every delimiter including `ç`. Feel free to test it with another one like `/`, `-` or anyone you prefer.
+The system supports almost every delimiter including `ç`. Feel free to test it with another one like `/`, `-` or anyone you prefer.
 
 ---
 System analyses all data inside `data/in` folder and write a report in `data/out` folder. <br>
