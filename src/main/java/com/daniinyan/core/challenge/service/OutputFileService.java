@@ -10,10 +10,6 @@ public class OutputFileService {
         this.outputFileDAO = outputFileDAO;
     }
 
-    public void create() {
-        outputFileDAO.create();
-    }
-
     public void updateField(String fieldName, long fieldValue) {
         outputFileDAO.updateData(fieldName, String.valueOf(fieldValue));
     }
