@@ -11,5 +11,3 @@ settings.gradle
 /.metadata/
 /.recommenders/
 /out/
-/testdata/*
-/data/*
