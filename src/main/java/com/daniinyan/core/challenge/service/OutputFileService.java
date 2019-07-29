@@ -25,4 +25,8 @@ public class OutputFileService {
     public void updateMostExpensiveSale(String fieldName, long idFromMostExpensiveSale) {
         outputFileDAO.updateData(fieldName, String.valueOf(idFromMostExpensiveSale));
     }
+
+    public void updateWorstSalesman(String fieldName, String worstSalesmanName) {
+        outputFileDAO.updateData(fieldName, worstSalesmanName);
+    }
 }

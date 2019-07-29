@@ -37,7 +37,7 @@ public class FindWorstSalesmanTest {
                 .collect(Collectors.toList())
                 .get(0);
 
-        assertEquals("Teste", OutputParser.parseWorstSalesman(worstSalesmanField));
+        assertEquals("Denise", OutputParser.parseWorstSalesman(worstSalesmanField));
 
     }
 

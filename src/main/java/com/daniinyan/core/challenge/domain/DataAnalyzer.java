@@ -25,6 +25,7 @@ public class DataAnalyzer extends Thread {
         setTotalCustomers();
         setTotalSellers();
         setMostExpensiveSale();
+        setWorstSalesman();
     }
 
     public void setTotalCustomers() {
@@ -45,4 +46,9 @@ public class DataAnalyzer extends Thread {
         outputFileService.updateMostExpensiveSale(fieldName, idFromMostExpensiveSale);
     }
 
+    public void setWorstSalesman() {
+        String fieldName = Field.WORST_SALESMAN.getFieldName();
+        String worstSalesmanName = inputFileService.getWorstSalesman().getName();
+        outputFileService.updateWorstSalesman(fieldName, worstSalesmanName);
+    }
 }

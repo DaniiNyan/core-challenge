@@ -1,7 +1,6 @@
 package com.daniinyan.core.challenge.service;
 
 import com.daniinyan.core.challenge.dao.InputFileDAO;
-import com.daniinyan.core.challenge.domain.Customer;
 import com.daniinyan.core.challenge.domain.Sale;
 import com.daniinyan.core.challenge.domain.Salesman;
 import com.daniinyan.core.challenge.parser.InputParser;
@@ -44,5 +43,26 @@ public class InputFileService {
                 .map(InputParser::parseSale)
                 .max(Comparator.comparing(Sale::getTotal))
                 .get();
+    }
+
+    public Salesman getWorstSalesman() {
+        return inputFileDAO
+                .readAllInputFiles()
+                .stream()
+                .filter(record -> InputParser.parseId(record).equals(ID_SALESMAN))
+                .map(InputParser::parseSalesman)
+                .min(Comparator.comparing(this::getTotalSoldBySalesman))
+                .get();
+    }
+
+    private Double getTotalSoldBySalesman(Salesman salesman) {
+        return inputFileDAO
+                .readAllInputFiles()
+                .stream()
+                .filter(record -> InputParser.parseId(record).equals(ID_SALE))
+                .map(InputParser::parseSale)
+                .filter(record -> record.getSalesmanName().equals(salesman.getName()))
+                .mapToDouble(Sale::getTotal)
+                .sum();
     }
 }
