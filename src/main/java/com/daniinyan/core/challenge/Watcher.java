@@ -1,20 +1,19 @@
 package com.daniinyan.core.challenge;
 
 import com.daniinyan.core.challenge.domain.DataAnalyzer;
+import com.daniinyan.core.challenge.domain.FilePath;
 
 import java.io.IOException;
 import java.nio.file.*;
 
 public class Watcher extends Thread {
 
-    private static final String INPUT_FILE_PATH = "in";
-
     private DataAnalyzer dataAnalyzer;
     private String directoryPathToWatch;
 
-    public Watcher(String directoryPath) {
-        this.dataAnalyzer = new DataAnalyzer(directoryPath);
-        this.directoryPathToWatch = directoryPath + INPUT_FILE_PATH;
+    public Watcher() {
+        this.dataAnalyzer = new DataAnalyzer(FilePath.DEFAULT_FOLDER.getPath());
+        this.directoryPathToWatch = FilePath.DEFAULT_FOLDER.getPath() + FilePath.INPUT_FOLDER.getPath();
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.daniinyan.core.challenge.dao;
 
+import com.daniinyan.core.challenge.domain.FilePath;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -11,14 +13,13 @@ import java.util.stream.Stream;
 
 public class InputFileDAO {
 
-    private static final String INPUT_FILE_PATH = "in";
     private static final String SUPPORTED_FILE_EXTENSION = ".dat";
 
     private Path inputFilesPath;
     private List<String> inputFiles = new ArrayList<>();
 
     public InputFileDAO(String directoryPath) {
-        this.inputFilesPath = Paths.get(directoryPath + INPUT_FILE_PATH);
+        this.inputFilesPath = Paths.get(directoryPath + FilePath.INPUT_FOLDER.getPath());
     }
 
     public List<String> readAllInputFiles() {

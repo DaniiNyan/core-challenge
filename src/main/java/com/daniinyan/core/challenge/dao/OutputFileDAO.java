@@ -1,6 +1,7 @@
 package com.daniinyan.core.challenge.dao;
 
 import com.daniinyan.core.challenge.domain.Field;
+import com.daniinyan.core.challenge.domain.FilePath;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,12 +15,10 @@ import java.util.stream.Collectors;
 
 public class OutputFileDAO {
 
-    private static final String OUTPUT_FILE_PATH = "out/data_analysis.done.dat";
-
     private Path outputFilePath;
 
     public OutputFileDAO(String directoryPath) {
-        this.outputFilePath = Paths.get(directoryPath + OUTPUT_FILE_PATH);
+        this.outputFilePath = Paths.get(directoryPath + FilePath.OUTPUT_FILE.getPath());
     }
 
     public void updateData(String fieldName, String value) {

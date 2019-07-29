@@ -15,6 +15,11 @@ public class DataAnalyzer extends Thread {
         outputFileService = new OutputFileService(new OutputFileDAO(directoryPath));
     }
 
+    public DataAnalyzer() {
+        inputFileService = new InputFileService(new InputFileDAO(FilePath.DEFAULT_FOLDER.getPath()));
+        outputFileService = new OutputFileService(new OutputFileDAO(FilePath.DEFAULT_FOLDER.getPath()));
+    }
+
     @Override
     public void run() {
         outputFileService.create();
